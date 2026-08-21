@@ -95,7 +95,7 @@ For a given variable bin:
 $$
 WOE_i =
 \ln \left(
-\frac{\text{pct good}_i}{\text{pct bad}_i}
+\frac{\text{\\% good}_i}{\text{\\% bad}_i}
 \right)
 $$
 
@@ -185,7 +185,11 @@ By December 2022:
 
 The results indicate that the model concentrated customers with a substantially higher natural propensity to return.
 
-The observed reactivation rate among the activable segment was: **44.02%**
+The observed reactivation rate among the activable segment was: 
+
+$$
+44.02\\%
+$$
 
 while the overall population represented the complete universe of previously inactive customers.
 
