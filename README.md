@@ -143,32 +143,45 @@ Model performance was evaluated using several complementary metrics:
 * KS statistic
 * Gini coefficient
 * Confusion matrix
+* Lift and Gain analysis
 * DeLong's test for comparison of correlated ROC curves
 
 ### ROC / AUC
 
-The final model achieved an AUC of approximately:
+The evaluated model specifications achieved an AUC of approximately 0.8364, indicating strong discrimination between customers who subsequently returned and those who remained inactive.
 
-**0.836**
+The full and reduced models showed virtually identical ROC performance:
 
-indicating strong discrimination between customers who subsequently returned and those who remained inactive.
+| Model                     | Predictors |          AUC |         KS |
+| ------------------------- | ---------: | -----------: | ---------: |
+| Full model                |         11 |     0.836444 |     0.5232 |
+| **Reduced model — Final** |      **9** | **0.836372** | **0.5230** |
 
-### Model comparison
+The ROC curves of both specifications were nearly indistinguishable, suggesting that the additional predictors included in the full model provided very limited incremental discrimination.
 
-Several model specifications were evaluated.
+### Model Comparison
 
-A reduced model containing fewer predictors was compared against a more complete specification using DeLong's test.
+Several model specifications were evaluated to assess the trade-off between model complexity and predictive performance.
 
-For example, one comparison produced:
+The full model included the complete set of candidate predictors, while the reduced model retained a smaller subset of variables.
 
-* AUC reduced model: **0.836372**
-* AUC full model: **0.836444**
-* DeLong test: **Z = -2.7628**
+The two models were compared using DeLong's test for correlated ROC curves, since both models were evaluated on the same test observations.
+
+The results were:
+
+* Full model AUC: **0.836444**
+* Reduced model AUC: **0.836372**
+* Absolute AUC difference: **0.000072**
+* DeLong Z: **2.7628**
 * p-value: **0.00573**
 
-Although the difference was statistically significant, the absolute improvement in AUC was extremely small.
+The DeLong test indicates a statistically significant difference between the two AUCs. However, the absolute difference in AUC is extremely small.
 
-This distinction is important from a business perspective: statistical significance does not necessarily imply meaningful incremental predictive value.
+This distinction is important: statistical significance does not necessarily imply meaningful incremental predictive value. In this case, the full model provides only a negligible improvement in discrimination while requiring additional predictors.
+
+The reduced model therefore represents a more parsimonious specification with virtually identical predictive performance.
+
+From a practical modeling perspective, this illustrates the importance of evaluating not only whether a statistical difference exists, but also whether the magnitude of that difference justifies the additional model complexity.
 
 ---
 
